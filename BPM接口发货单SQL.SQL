@@ -90,6 +90,6 @@ left join so_saleorder so_saleorder on b.csrcid = so_saleorder.csaleorderid
 left join bd_billtype bd_billtype on so_saleorder.ctrantypeid  = bd_billtype.pk_billtypeid
 left join bd_transporttype bd_transporttype on so_saleorder.ctransporttypeid = bd_transporttype.pk_transporttype
 left join bd_defdoc fhfs on h.vdef14 = fhfs.pk_defdoc
-where  (substr(b.dsenddate, 1, 10) >= '2018-06-11'  and fhfs.name = '槽罐车'  or substr(b.dsenddate, 1, 10) >= '2018-06-11' and fhfs.name = '槽罐车整车' )
+where  (substr(b.dsenddate, 1, 10) >= '2018-06-11'  and substr(h.creationtime, 1, 10) >= '2018-06-10'  and fhfs.name = '槽罐车'  or substr(b.dsenddate, 1, 10) >= '2018-06-11'  and substr(h.creationtime, 1, 10) >= '2018-06-10'   and fhfs.name = '槽罐车整车' )
        and bd_transporttype.name <>'自提' and  bd_transporttype.name <>'手续单据'  and  bd_transporttype.name <>'OEM无运输'  and fhfs.name <> '手续' and fhfs.name <> '自提'  and h.modifiedtime is null
 and h.creationtime>'{0}'
