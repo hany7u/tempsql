@@ -32,13 +32,6 @@ LEFT JOIN (SELECT gl_voucher.period period,
                     gl_voucher.pk_voucher pk_voucher
                FROM gl_voucher gl_voucher
               WHERE gl_voucher.dr = 0 
-                    and gl_voucher.pk_voucher in 
-                                              (select b.pk_voucher 
-                                               from gl_detail b
-                                               where b.accountcode = '1402'
-                                                     and b.yearv = '2018' 
-                                                     and b.pk_org = '0001B3100000000028GW'
-                                               )
            ) pz
 ON (pz.pk_voucher = t.des_relationid) 
 where pz.num is not null and substr(t.des_busidate,1,7) = '2018-12'
